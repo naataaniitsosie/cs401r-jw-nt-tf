@@ -1,0 +1,29 @@
+Problem: 
+	Crop the images of documents so that the top page takes up the whole image. 
+
+Approach: 
+	1. Apply a histogram stretch
+	2. Apply a median filter to blur. This will get rid of the text and background noise
+	3. Use a canny edge detector to create a binary image that will show a faint outline of the page
+	4. Find the min and max edges in both the x and y direction and crop using these values.
+
+
+Results:
+	Best Results:
+		Images 3, 5, 11
+		These pages were usually in books with very dark/defined lines for the rest of the pages.
+	Worst Results:
+		Images 9, 10
+		Pages were in a book but one side was blank and outer pages were messy
+			These didn't work well because pages surrounded by a lot of other white were not able to be picked out by the median and canny processes. 
+
+
+Possible Improvements:
+	What we have gives a decent first crop. One possible way to improve would be to take our result images and either run our algorithm, or another, on it again to try and narrow the crop. One thing we played around with but didn't flesh out fully was putting our canny image data on a histogram and analyzing the data that way. The data was very revealing on the histogram and someone with the knowledge to accurately identify the critical peaks and valleys and crop accordingly could make drastic improvements on the algorithm. 
+
+
+
+Important Contributions
+Naataanii - Selecting algorithm and providing the base code in our approach
+Trent - Finding the optimal parameters for the median blur and canny processes to crop with
+Jacob - Finding initial approach to crop. Communication 
