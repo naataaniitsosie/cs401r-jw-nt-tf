@@ -12,6 +12,8 @@ def CropTopImage(src):
 
     #crop
     imgout = Crop.crop(imgout, original)
+    
+    imgout = imgp.variance_prep(imgout, original, num)
 
     return imgout
 
